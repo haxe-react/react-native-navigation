@@ -1,0 +1,22 @@
+{
+    "name": "react-native-navigation",
+    "license": "MIT",
+    "tags": [
+      "react",
+      "native",
+      "navigation"
+    ],
+    "classPath": "src",
+    "contributors": [
+      "tokom",
+      "zabojad",
+      "kiroukou"
+    ],
+    "releasenote": "Initial release",
+    "version": "0.1.0",
+    "url": "https://github.com/haxe-react/haxe-react-native-navigation",
+    "dependencies": {
+      "react": "",
+      "react-native": ""
+    }
+  }
