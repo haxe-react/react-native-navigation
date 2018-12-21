@@ -224,6 +224,10 @@ abstract IosSideMenuAnimation(String) {
     var Slide = 'slide';
     var SlideAndScale = 'slide-and-scale';
 }
+abstract IosOpenGestureMode(String) {
+    var EntireScreen = 'entireScreen';
+    var Bezel = 'bezel';
+}
 #end
 typedef SideMenuPartOptions = {
     ? width : Int,
@@ -238,9 +242,9 @@ typedef SideMenuPartOptions = {
 }
 typedef SideMenuOptions = {
     ? left : SideMenuPartOptions,
-    ? right : SideMenuPartOptions
+    ? right : SideMenuPartOptions,
 #if ios
-    openGestureMode: 'entireScreen' | 'bezel'
+    ? openGestureMode : IosOpenGestureMode,
 #end
 }
 
