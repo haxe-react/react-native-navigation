@@ -29,10 +29,13 @@ typedef NavigationOptions = {
     ? primaryEdge : String,
     ? minWidth : Int,
     ? maxWidth : Int,
+    ? animations : AnimationsOptions,
+    ? customTransition : SharedElementsTransition,
 #if ios
     ? popGesture : Bool,
     ? backgroundImage : String,
     ? rootBackgroundImage : String,
+    ? preview : Dynamic,
 #end   
 }
 
@@ -70,6 +73,20 @@ typedef LayoutOptions = {
 #end
 }
 
+typedef ButtonOptions = {
+    id : String,
+    icon : String,
+    component : {
+        name : String,
+    },
+    text : String,
+    enabled : Bool,
+    disableIconTint : Bool,
+    color : String,
+    disabledColor : String,
+    testID : String,
+}
+
 @:enum
 abstract AlignmentValue(String) {
     var Left = 'left';
@@ -84,6 +101,8 @@ abstract IosBarStyle(String) {
 }
 #end
 typedef TopBarOptions = {
+    ? leftButtons : Array<ButtonOptions>,
+    ? rightButtons : Array<ButtonOptions>,
     ? visible : Bool,
     ? animate : Bool, // Controls whether TopBar visibility changes should be animated
     ? hideOnScroll : Bool,
@@ -252,4 +271,17 @@ typedef PreviewOptions = {
     ? height : Int,
     ? commit : Bool,
     ? actions : Array<PreviewActionOptions>,
+}
+
+typedef SharedElementTransition = {
+    type : String,
+    fromId : String,
+    toId : String,
+    startDelay : Float,
+    springVelocity : Float,
+    duration : Float,
+}
+typedef SharedElementsTransition = {
+    animations : Array<SharedElementTransition>,
+    duration : Float
 }
