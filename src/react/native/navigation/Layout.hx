@@ -5,7 +5,9 @@ typedef Layout = {
     ? stack : StackLayout,
     ? bottomTabs : TabsLayout,
     ? sideMenu : SideMenuLayout,
+#if ios
     ? splitView : SplitViewLayout,
+#end
 }
 
 typedef ComponentLayout = {
@@ -33,9 +35,11 @@ typedef SideMenuLayout = {
     ? right : Layout,
 }
 
+#if ios
 typedef SplitViewLayout = {
     ? id : String,
     master : Layout,
     detail : Layout,
-    ? options: NavigationOptions,
+    ? options: react.native.navigation.NavigationOptions.SplitViewOptions,
 }
+#end

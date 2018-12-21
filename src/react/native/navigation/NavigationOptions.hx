@@ -24,11 +24,6 @@ typedef NavigationOptions = {
     ? sideMenu : SideMenuOptions,
     ? overlay : OverlayOptions,
     ? preview : PreviewOptions,
-    // SplitViewLayout only
-    ? displayMode : String,
-    ? primaryEdge : String,
-    ? minWidth : Int,
-    ? maxWidth : Int,
     ? animations : AnimationsOptions,
     ? customTransition : SharedElementsTransition,
 #if ios
@@ -285,3 +280,12 @@ typedef SharedElementsTransition = {
     animations : Array<SharedElementTransition>,
     duration : Float
 }
+
+#if ios
+typedef SplitViewOptions = {
+    ? displayMode : String,
+    ? primaryEdge : String,
+    ? minWidth : Int,
+    ? maxWidth : Int,
+}
+#end
