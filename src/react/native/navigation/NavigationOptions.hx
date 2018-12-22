@@ -70,16 +70,16 @@ typedef LayoutOptions = {
 
 typedef ButtonOptions = {
     id : String,
-    icon : String,
-    component : {
+    ? icon : String,
+    ? component : {
         name : String,
     },
-    text : String,
-    enabled : Bool,
-    disableIconTint : Bool,
-    color : String,
-    disabledColor : String,
-    testID : String,
+    ? text : String,
+    ? enabled : Bool,
+    ? disableIconTint : Bool,
+    ? color : String,
+    ? disabledColor : String,
+    ? testID : String,
 }
 
 @:enum

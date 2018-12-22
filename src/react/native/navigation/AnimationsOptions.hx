@@ -1,6 +1,7 @@
 package react.native.navigation;
 
 typedef AnimationsOptions = {
+    ? setStackRoot : AnimationOptions,
     ? setRoot : AnimationOptions,
     ? push : AnimationOptions,
     ? pop : AnimationOptions,
