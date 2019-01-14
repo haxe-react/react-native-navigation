@@ -30,7 +30,7 @@ typedef NavigationOptions = {
     ? popGesture : Bool,
     ? backgroundImage : String,
     ? rootBackgroundImage : String,
-    ? preview : Dynamic,
+    //? preview : Dynamic,
 #end   
 }
 
@@ -63,6 +63,7 @@ abstract LayoutOrientation(String){
 typedef LayoutOptions = {
     ? orientation : Array<LayoutOrientation>,
     ? backgroundColor : String,
+    ? componentBackgroundColor : String, // Set background color only for components, helps reduce overdraw if background color is set in default options.
 #if android
     ? topMargin : Float, // Navigation.constants().statusBarHeight, // Set the layout's top margin
 #end
@@ -127,13 +128,21 @@ typedef TopBarOptions = {
     },
     ? backButton : {
         ? icon : String,
-        ? visible : Bool
+        ? visible : Bool,
+        ? showTitle : Bool,
+        #if ios
+        ? title : String,
+        #end
     },
     ? background : {
         ? color : String,
         ? component : {
             name : String
-        }
+        },
+        #if ios
+        ? translucent : Bool,
+        ? blur : Bool,
+        #end
     },
 #if android
     ? height : Float, // TopBar height in dp
@@ -144,16 +153,7 @@ typedef TopBarOptions = {
 #end
 #if ios
     ? barStyle : IosBarStyle,
-    ? background : {
-        ? color : String,
-        ? translucent : Bool,
-        ? blur : Bool
-    },
     ? noBorder : Bool,
-    ? backButton : {
-        ? title : String,
-        ? showTitle : Bool
-    },
     ? searchBar : Bool, // iOS 11+ native UISearchBar inside topBar
     ? searchBarHiddenWhenScrolling : Bool,
     ? searchBarPlaceholder : String, // iOS 11+ SearchBar placeholder
@@ -224,6 +224,8 @@ abstract IosSideMenuAnimation(String) {
     var Slide = 'slide';
     var SlideAndScale = 'slide-and-scale';
 }
+
+@:enum
 abstract IosOpenGestureMode(String) {
     var EntireScreen = 'entireScreen';
     var Bezel = 'bezel';

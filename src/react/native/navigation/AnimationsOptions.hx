@@ -11,6 +11,7 @@ typedef AnimationsOptions = {
 typedef AnimationOptions = {
     > AnimationElementOptions,
     ? enabled : Bool,
+    ? waitForRender : Bool,
     ? topBar : {
         > AnimationElementOptions,
         ? id : String,
