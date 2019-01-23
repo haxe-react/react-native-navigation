@@ -1,17 +1,18 @@
 package react.native.navigation;
 
 @:enum
-abstract ModalPresentationStyle(String) {
+abstract ModalPresentationStyle(String) to String {
+    var OverCurrentContext = 'overCurrentContext';
 #if ios
     var FormSheet = 'formSheet';
     var PageSheet = 'pageSheet';
     var OverFullScreen = 'overFullScreen';
     var CurrentContext = 'currentContext';
-    var PopOver = 'popOver';
+    //var PopOver = 'popOver';//Where is this coming from?
     var FullScreen = 'fullScreen';
-#end
-    var OverCurrentContext = 'overCurrentContext';
+#elseif android
     var None = 'none';
+#end
 }
 
 typedef NavigationOptions = {
@@ -39,6 +40,7 @@ abstract StatusBarStyle(String) {
     var Light = 'light';
     var Dark = 'dark';
 }
+
 typedef StatusBarOptions = {
     ? visible : Bool,
     ? style : StatusBarStyle,
@@ -60,6 +62,7 @@ abstract LayoutOrientation(String){
     var SensorLandscape = 'sensorLandscape';
 #end
 }
+
 typedef LayoutOptions = {
     ? orientation : Array<LayoutOrientation>,
     ? backgroundColor : String,
@@ -74,6 +77,7 @@ typedef ButtonOptions = {
     ? icon : String,
     ? component : {
         name : String,
+        ? passProps: Dynamic,
     },
     ? text : String,
     ? enabled : Bool,
@@ -89,12 +93,23 @@ abstract AlignmentValue(String) {
     var Center = 'center';
     var Right = 'right';
 }
+
+
+@:enum
+abstract TitleAlignmentValue(String) {
+    var Left = 'left';
+    var Center = 'center';
+    var Right = 'right';
+    var Fill = 'fill';
+}
+
 #if ios
 @:enum
 abstract IosBarStyle(String) {
     var Default = 'default';
     var Black = 'black';
 }
+
 #end
 typedef TopBarOptions = {
     ? leftButtons : Array<ButtonOptions>,
@@ -110,10 +125,13 @@ typedef TopBarOptions = {
         ? fontSize : Int,
         ? color : String,
         ? fontFamily : String,
+
+//IOS Only for the moment... for the left/right Buttons (left sure, right...)
         ? component : {
             name : String,
-            ? alignment : AlignmentValue
+            ? alignment : TitleAlignmentValue,
         },
+
 #if android
         ? height : Float, // TitleBar height in dp
         ? alignment : AlignmentValue, // Center title
@@ -130,6 +148,7 @@ typedef TopBarOptions = {
         ? icon : String,
         ? visible : Bool,
         ? showTitle : Bool,
+        ? color : String,
         #if ios
         ? title : String,
         #end
@@ -174,6 +193,7 @@ abstract TabTitleDisplayMode(String){
     var AlwaysHide = 'alwaysHide';
 }
 #end
+
 typedef BottomTabsOptions = {
     ? visible : Bool,
     ? animate : Bool, // Controls whether BottomTabs visibility changes should be animated
@@ -231,6 +251,7 @@ abstract IosOpenGestureMode(String) {
     var Bezel = 'bezel';
 }
 #end
+
 typedef SideMenuPartOptions = {
     ? width : Int,
     ? height : Int,
@@ -242,6 +263,7 @@ typedef SideMenuPartOptions = {
     ? animationType : IosSideMenuAnimation // defaults to none if not provided
 #end
 }
+
 typedef SideMenuOptions = {
     ? left : SideMenuPartOptions,
     ? right : SideMenuPartOptions,
@@ -260,12 +282,14 @@ abstract PreviewActionStyle(String) {
     var Selected = 'selected';
     var Destructive = 'destructive';
 }
+
 typedef PreviewActionOptions = {
     ? id : String,
     ? title : String,
     ? style : PreviewActionStyle,
     ? actions : Array<PreviewActionOptions>
 }
+
 typedef PreviewOptions = {
     ? reactTag : Int, // result from findNodeHandle(ref)
     ? width : Int,
@@ -282,6 +306,7 @@ typedef SharedElementTransition = {
     springVelocity : Float,
     duration : Float,
 }
+
 typedef SharedElementsTransition = {
     animations : Array<SharedElementTransition>,
     duration : Float
