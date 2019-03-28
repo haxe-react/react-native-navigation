@@ -1,5 +1,7 @@
 package react.native.navigation;
 
+import react.native.navigation.Layout.ComponentLayout;
+
 @:enum
 abstract ModalPresentationStyle(String) to String {
     var OverCurrentContext = 'overCurrentContext';
@@ -128,7 +130,7 @@ typedef TopBarOptions = {
 
 //IOS Only for the moment... for the left/right Buttons (left sure, right...)
         ? component : {
-            name : String,
+            > ComponentLayout,
             ? alignment : TitleAlignmentValue,
         },
 
@@ -149,19 +151,19 @@ typedef TopBarOptions = {
         ? visible : Bool,
         ? showTitle : Bool,
         ? color : String,
-        #if ios
+#if ios
         ? title : String,
-        #end
+#end
     },
     ? background : {
         ? color : String,
         ? component : {
             name : String
         },
-        #if ios
+#if ios
         ? translucent : Bool,
         ? blur : Bool,
-        #end
+#end
     },
 #if android
     ? height : Float, // TopBar height in dp
@@ -253,8 +255,8 @@ abstract IosOpenGestureMode(String) {
 #end
 
 typedef SideMenuPartOptions = {
-    ? width : Int,
-    ? height : Int,
+    ? width : Float,
+    ? height : Float,
     ? visible : Bool,
     ? enabled : Bool,
 #if ios

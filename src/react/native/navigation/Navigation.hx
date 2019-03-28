@@ -22,7 +22,7 @@ extern class Navigation {
     static public function pop(id : String, ? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
     static public function popToRoot(id : String, ? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
     static public function popTo(id : String, ? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
-    static public function setStackRoot(id : String, l : Layout) : js.Promise<Dynamic>;
+    static public function setStackRoot(id : String, l : haxe.extern.EitherType<Layout,Array<Layout>>) : js.Promise<Dynamic>;
     static public function showModal(l : Layout) : js.Promise<Dynamic>;
     static public function dismissModal(id : String, ? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
     static public function dismissAllModals(? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
