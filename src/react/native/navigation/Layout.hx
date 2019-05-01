@@ -33,6 +33,7 @@ typedef SideMenuLayout = {
     ? left : Layout,
     ? center : Layout,
     ? right : Layout,
+    ? options : NavigationOptions,
 }
 
 #if ios
