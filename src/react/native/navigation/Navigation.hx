@@ -6,9 +6,9 @@ typedef LayoutHierarchy = {
 
 @:jsRequire("react-native-navigation","Navigation")
 extern class Navigation {
-    static public var Element : react.React.CreateElementType;
+    static public var Element : react.ReactType;
 #if ios
-    static public var TouchablePreview : react.React.CreateElementType;
+    static public var TouchablePreview : react.ReactType;
 #end
     // top level
     static public function registerComponent(id : String, cb : Void -> Dynamic) : Void;
