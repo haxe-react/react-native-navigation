@@ -17,6 +17,7 @@ extern class Navigation {
     static public function setRoot(v : LayoutHierarchy) : js.Promise<Dynamic>;
     static public function showOverlay(v : Layout) : js.Promise<Dynamic>;
     static public function dismissOverlay(id : String) : js.Promise<Dynamic>;
+    static public function dismissAllOverlays(? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
     // screen level
     static public function push(id : String, l : Layout) : js.Promise<Dynamic>;
     static public function pop(id : String, ? mergeOptions : NavigationOptions) : js.Promise<Dynamic>;
